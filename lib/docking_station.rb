@@ -1,20 +1,20 @@
+require './lib/bike.rb'
+
 class DockingStation
-    attr_reader :bike
-    def bike
-        @bike
+    attr_reader :bikes
+    def initialize
+        @bikes = []
     end
-    def docking_bike(bike)
-        fail 'No dock' if @bike
-        @bike = bike
+    def bikes
+        @bikes
     end
     def release_bike
-        fail 'No bike' unless @bike
-        @bike
+        fail 'No bikes' if @bikes.empty?
+        @bikes.pop
+    end
+    def docking_bike(bike)
+        fail 'No space in dock' if @bikes.length >= 20
+        @bikes << bike
     end
 end
 
-class Bike
-    def working?
-        true
-    end
-end
