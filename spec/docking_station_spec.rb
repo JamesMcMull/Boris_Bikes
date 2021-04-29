@@ -29,7 +29,7 @@ describe DockingStation do
     end
     describe '#docking_bike' do
     it 'raises an error if no dock' do
-        20.times {subject.docking_bike(Bike.new)}
+        DockingStation::DEFAULT_CAPACITY.times {subject.docking_bike(Bike.new)}
         expect { subject.docking_bike Bike.new }.to raise_error 'No space in dock'
         end
     end
